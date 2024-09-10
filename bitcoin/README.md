@@ -36,13 +36,13 @@ docker run -it --rm --entrypoint sh registry.devops.rivtower.com/sparkos/bitcoin
 ```
 $ kubectl exec -n default bitcoin-0 -c bitcoin -- bitcoin-cli getchainstates
 {
-  "headers": 858600,
+  "headers": 860745,
   "chainstates": [
     {
-      "blocks": 858600,
-      "bestblockhash": "00000000000000000000d53f8ca46e86625f05a074d70f47013914d308342dd1",
-      "difficulty": 86871474313761.95,
-      "verificationprogress": 0.9999862022721966,
+      "blocks": 860452,
+      "bestblockhash": "00000000000000000001096ee6c363f8a0a2691b42ebf3e0664349faafdc1f96",
+      "difficulty": 89471664776970.77,
+      "verificationprogress": 0.9989312835848051,
       "coins_db_cache_bytes": 8388608,
       "coins_tip_cache_bytes": 461373440,
       "validated": true
@@ -115,4 +115,26 @@ $ kubectl exec -n default bitcoin-0 -c bitcoin -- bitcoin-cli getnetworkinfo
   ],
   "warnings": ""
 }
+
+$ kubectl exec -n default bitcoin-0 -c bitcoin -- bitcoin-cli getnetworkhashps
+6.69726941265431e+20
+
+$ kubectl exec -n default bitcoin-0 -c bitcoin -- bitcoin-cli getmempoolinfo
+{
+  "loaded": true,
+  "size": 88086,
+  "bytes": 48405595,
+  "usage": 299482256,
+  "total_fee": 1.00051171,
+  "maxmempool": 300000000,
+  "mempoolminfee": 0.00002349,
+  "minrelaytxfee": 0.00001000,
+  "incrementalrelayfee": 0.00001000,
+  "unbroadcastcount": 0,
+  "fullrbf": false
+}
+
+$ kubectl exec -n default bitcoin-0 -c bitcoin -- du -s /data/.bitcoin/
+17689404        /data/.bitcoin/
+
 ```
