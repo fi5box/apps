@@ -1,0 +1,24 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bitcoin
+  namespace: default
+  labels:
+    app: bitcoin
+spec:
+  selector:
+    app: bitcoin
+  ports:
+    - protocol: TCP
+      name: bitcoin-rpc
+      port: 8332
+      targetPort: 8332
+    - protocol: TCP
+      name: zmp-block
+      port: 28332
+      targetPort: 28332
+    - protocol: TCP
+      name: zmp-tx
+      port: 28333
+      targetPort: 28333

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  torrc: |+
+    # Ports
+    SocksPort   127.0.0.1:9050
+    ControlPort 127.0.0.1:9051
+
+    # tor --hash-password passwordtogenerate
+    HashedControlPassword 16:F6037168CB4D199660646ED37463953A4F77220A6FAEC180D09956CD8F
+metadata:
+  labels:
+    app: bitcoin-tor
+  name: bitcoin-torrc

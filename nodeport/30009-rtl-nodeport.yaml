@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rtl-nodeport
+  namespace: default
+  labels:
+    app: rtl
+spec:
+  selector:
+    app: rtl
+  ports:
+    - protocol: TCP
+      name: rtl-web
+      port: 3000
+      targetPort: 3000
+      nodePort: 30009
+  type: NodePort

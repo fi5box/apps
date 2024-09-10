@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rtl-lb
+  namespace: default
+  labels:
+    app: rtl
+spec:
+  loadBalancerClass: tailscale # add this!
+  type: LoadBalancer
+  ports:
+  - port: 3000
+  selector:
+    app: rtl

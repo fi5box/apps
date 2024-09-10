@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lnd
+  namespace: regtest
+  labels:
+    app: lnd
+spec:
+  serviceName: lnd
+  replicas: 3 # Scale as match as you want
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: lnd
+  template:
+    metadata:
+      labels:
+        app: lnd
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: lnd
+          image: lightninglabs/lndinit:v0.1.22-beta-lnd-v0.18.3-beta.rc1
+          command: ["/bin/bash", "-c"]
+          args:
+            - if [[ ! -f /root/.lnd/walletpassword.txt ]]; then lndinit gen-password > /root/.lnd/walletpassword.txt; fi;
+              lnd
+              --bitcoin.node=bitcoind
+              --bitcoin.regtest
+              --rpcmiddleware.enable
+              --restlisten=0.0.0.0:8080
+              --rpclisten=0.0.0.0:10009
+              --tlsextradomain=lnd-0.lnd
+              --tlsextradomain=lnd-1.lnd
+              --tlsextradomain=lnd-2.lnd
+              --bitcoind.rpchost=bitcoin
+              --bitcoind.rpcuser=bitcoin
+              --bitcoind.rpcpass=bitcoin
+              --bitcoind.zmqpubrawblock=tcp://bitcoin:28332
+              --bitcoind.zmqpubrawtx=tcp://bitcoin:28333
+              --wallet-unlock-allow-create
+              --wallet-unlock-password-file=/root/.lnd/walletpassword.txt
+          ports:
+          - containerPort: 10009
+            name: lnd-rpc
+            protocol: TCP
+          - containerPort: 8080
+            name: lnd-rest
+            protocol: TCP
+          - containerPort: 9735
+            name: lnd-p2p
+            protocol: TCP
+          volumeMounts:
+            - name: lnd
+              mountPath: /root/.lnd
+  volumeClaimTemplates:
+    - metadata:
+        name: lnd
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 50Gi

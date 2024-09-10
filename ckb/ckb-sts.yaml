@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ckb
+  namespace: default
+  labels:
+    app: ckb
+spec:
+  serviceName: ckb
+  replicas: 1 # Scale as match as you want
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: ckb
+  template:
+    metadata:
+      labels:
+        app: ckb
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: ckb
+          image: nervos/ckb:v0.117.0
+          command:
+          - bash
+          - -c
+          - "ckb init -c mainnet; ckb run"
+          ports:
+          - containerPort: 8114
+            name: ckb-rpc
+            protocol: TCP
+          - containerPort: 8115
+            name: ckb-p2p
+            protocol: TCP
+          volumeMounts:
+            - name: ckb
+              mountPath: /var/lib/ckb
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsUser: 1000
+  volumeClaimTemplates:
+    - metadata:
+        name: ckb
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 50Gi
