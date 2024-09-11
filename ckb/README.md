@@ -75,4 +75,10 @@ median_time: "1725874633649 (2024-09-09 09:37:13.649 +00:00)"
 
 $ kubectl exec -it -n default ckb-0 -c ckb -- du -s /var/lib/ckb
 58111284        /var/lib/ckb
+
+$ ckb-cli rpc get_current_epoch
+compact_target: 0x19037aa4
+length: 944
+number: 10536
+start_number: 13999998
 ```

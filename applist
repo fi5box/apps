@@ -1,14 +1,14 @@
 [
     {
         "name": "bitcoin",
-        "icon": "res/bitcoin.png",
+        "icon": "/res/bitcoin.png",
         "version": "v27.0",
         "maintainer": "Bitcoin Core",
         "introduction": "Bitcoin Core is an open source project which maintains and releases Bitcoin client software called “Bitcoin Core”.",
         "screenshots": [
-            "res/bitcoin.png",
-            "res/bitcoin.png",
-            "res/bitcoin.png"
+            "/res/bitcoin.png",
+            "/res/bitcoin.png",
+            "/res/bitcoin.png"
         ],
         "dependent": [],
         "nodeport": 30001,
@@ -16,14 +16,14 @@
     },
     {
         "name": "ckb",
-        "icon": "res/ckb.png",
+        "icon": "/res/ckb.png",
         "version": "v0.117.0",
         "maintainer": "Nervos Network Foundation",
         "introduction": "CKB is a highly flexible and interoperable blockchain built on RISC-V and secured by Proof-of-Work. As the foundation of the Nervos network, CKB ensures outstanding security, decentralization, and modularity. By mapping Bitcoin through RGB++, CKB empowers users and developers to explore boundless possibilities in autonomous worlds (AW).",
         "screenshots": [
-            "res/bitcoin.png",
-            "res/bitcoin.png",
-            "res/bitcoin.png"
+            "/res/bitcoin.png",
+            "/res/bitcoin.png",
+            "/res/bitcoin.png"
         ],
         "dependent": [],
         "nodeport": 30004,
@@ -31,14 +31,14 @@
     },
     {
         "name": "lnd",
-        "icon": "res/lnd.png",
+        "icon": "/res/lnd.png",
         "version": "v0.18.3-beta.rc1",
         "maintainer": "Lightning Labs",
         "introduction": "The Lightning Network Daemon (lnd) - is a complete implementation of a Lightning Network node.",
         "screenshots": [
-            "res/bitcoin.png",
-            "res/bitcoin.png",
-            "res/bitcoin.png"
+            "/res/bitcoin.png",
+            "/res/bitcoin.png",
+            "/res/bitcoin.png"
         ],
         "dependent": [
             "bitcoin"
@@ -48,14 +48,14 @@
     },
     {
         "name": "rtl",
-        "icon": "res/rtl.png",
+        "icon": "/res/rtl.png",
         "version": "v0.15.2",
         "maintainer": "ShahanaFarooqui",
         "introduction": "Ride The Lightning a powerful tool to help manage your lightning node.",
         "screenshots": [
-            "res/bitcoin.png",
-            "res/bitcoin.png",
-            "res/bitcoin.png"
+            "/res/bitcoin.png",
+            "/res/bitcoin.png",
+            "/res/bitcoin.png"
         ],
         "dependent": [
             "lnd"
