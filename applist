@@ -6,9 +6,9 @@
         "maintainer": "Bitcoin Core",
         "introduction": "Bitcoin Core is an open source project which maintains and releases Bitcoin client software called “Bitcoin Core”.",
         "screenshots": [
-            "/res/bitcoin.png",
-            "/res/bitcoin.png",
-            "/res/bitcoin.png"
+            "/res/bitcoin-0.png",
+            "/res/bitcoin-1.png",
+            "/res/bitcoin-2.png"
         ],
         "dependent": [],
         "nodeport": 30001,
@@ -21,9 +21,9 @@
         "maintainer": "Nervos Network Foundation",
         "introduction": "CKB is a highly flexible and interoperable blockchain built on RISC-V and secured by Proof-of-Work. As the foundation of the Nervos network, CKB ensures outstanding security, decentralization, and modularity. By mapping Bitcoin through RGB++, CKB empowers users and developers to explore boundless possibilities in autonomous worlds (AW).",
         "screenshots": [
-            "/res/bitcoin.png",
-            "/res/bitcoin.png",
-            "/res/bitcoin.png"
+            "/res/ckb-0.png",
+            "/res/ckb-1.png",
+            "/res/ckb-2.png"
         ],
         "dependent": [],
         "nodeport": 30004,
@@ -36,9 +36,9 @@
         "maintainer": "Lightning Labs",
         "introduction": "The Lightning Network Daemon (lnd) - is a complete implementation of a Lightning Network node.",
         "screenshots": [
-            "/res/bitcoin.png",
-            "/res/bitcoin.png",
-            "/res/bitcoin.png"
+            "/res/lnd-0.png",
+            "/res/lnd-1.png",
+            "/res/lnd-2.png"
         ],
         "dependent": [
             "bitcoin"
@@ -53,9 +53,9 @@
         "maintainer": "ShahanaFarooqui",
         "introduction": "Ride The Lightning a powerful tool to help manage your lightning node.",
         "screenshots": [
-            "/res/bitcoin.png",
-            "/res/bitcoin.png",
-            "/res/bitcoin.png"
+            "/res/rtl-0.png",
+            "/res/rtl-1.png",
+            "/res/rtl-2.png"
         ],
         "dependent": [
             "lnd"

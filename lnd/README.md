@@ -272,6 +272,42 @@ $ kubectl exec -n default lnd-0 -c lnd -- lncli listchannels
     ]
 }
 
+$ kubectl exec -n default lnd-0 -c lnd -- lncli feereport
+{
+    "channel_fees": [],
+    "day_fee_sum": "0",
+    "week_fee_sum": "0",
+    "month_fee_sum": "0"
+}
+
+$ kubectl exec -n default lnd-0 -c lnd -- lncli getchaninfo 743145615608774656
+{
+    "channel_id": "743145615608774656",
+    "chan_point": "2b91c69a05082d05d7135b41806cc34303837ea10383d1ac3eef77969f98d16e:0",
+    "last_update": 1616482074,
+    "node1_pub": "021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d",
+    "node2_pub": "032d5a4b5a6a344ca15f6284e3e149f4716a1af782ffbb0194e0dadc077051acf0",
+    "capacity": "16777215",
+    "node1_policy": {
+        "time_lock_delta": 40,
+        "min_htlc": "1000",
+        "fee_base_msat": "1000",
+        "fee_rate_milli_msat": "500",
+        "disabled": false,
+        "max_htlc_msat": "16609443000",
+        "last_update": 1616480497
+    },
+  "node2_policy": {
+        "time_lock_delta": 40,
+        "min_htlc": "1000",
+        "fee_base_msat": "1000",
+        "fee_rate_milli_msat": "1000",
+        "disabled": false,
+        "max_htlc_msat": "16609443000",
+        "last_update": 1616482074
+    }
+}
+
 $ kubectl exec -n default lnd-0 -c lnd -- xxd -p -c 1000 /root/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
 0201036c6e6402f801030a1004a6c6b76397b203c439b0880a4333011201301a160a0761646472657373120472656164120577726974651a130a04696e666f120472656164120577726974651a170a08696e766f69636573120472656164120577726974651a210a086d616361726f6f6e120867656e6572617465120472656164120577726974651a160a076d657373616765120472656164120577726974651a170a086f6666636861696e120472656164120577726974651a160a076f6e636861696e120472656164120577726974651a140a057065657273120472656164120577726974651a180a067369676e6572120867656e6572617465120472656164000006201c492b8bd860534f68b7e465dd787239e84c2e570bfc34bd150f17cb11b7c632
 
