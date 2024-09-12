@@ -1,9 +1,11 @@
 [
     {
         "name": "bitcoin",
+        "title": "Bitcoin",
         "icon": "/res/bitcoin.png",
         "version": "v27.0",
         "maintainer": "Bitcoin Core",
+        "category": "Bitcoin",
         "introduction": "Bitcoin Core is an open source project which maintains and releases Bitcoin client software called “Bitcoin Core”.",
         "screenshots": [
             "/res/bitcoin-0.png",
@@ -16,9 +18,11 @@
     },
     {
         "name": "ckb",
+        "title": "CKB",
         "icon": "/res/ckb.png",
         "version": "v0.117.0",
         "maintainer": "Nervos Network Foundation",
+        "category": "Nervos Network",
         "introduction": "CKB is a highly flexible and interoperable blockchain built on RISC-V and secured by Proof-of-Work. As the foundation of the Nervos network, CKB ensures outstanding security, decentralization, and modularity. By mapping Bitcoin through RGB++, CKB empowers users and developers to explore boundless possibilities in autonomous worlds (AW).",
         "screenshots": [
             "/res/ckb-0.png",
@@ -31,9 +35,11 @@
     },
     {
         "name": "lnd",
+        "title": "Lightning Node",
         "icon": "/res/lnd.png",
         "version": "v0.18.3-beta.rc1",
         "maintainer": "Lightning Labs",
+        "category": "Bitcoin",
         "introduction": "The Lightning Network Daemon (lnd) - is a complete implementation of a Lightning Network node.",
         "screenshots": [
             "/res/lnd-0.png",
@@ -48,9 +54,11 @@
     },
     {
         "name": "rtl",
+        "title": "Ride The Lightning",
         "icon": "/res/rtl.png",
         "version": "v0.15.2",
         "maintainer": "ShahanaFarooqui",
+        "category": "Bitcoin",
         "introduction": "Ride The Lightning a powerful tool to help manage your lightning node.",
         "screenshots": [
             "/res/rtl-0.png",
