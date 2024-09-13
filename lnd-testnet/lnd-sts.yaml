@@ -33,6 +33,7 @@ spec:
               --tlsextradomain=lnd-0.lnd
               --tlsextradomain=lnd-1.lnd
               --tlsextradomain=lnd-2.lnd
+              --tlsextradomain=fi5box.local
               --bitcoind.rpchost=bitcoin
               --bitcoind.rpcuser=bitcoin
               --bitcoind.rpcpass=bitcoin
