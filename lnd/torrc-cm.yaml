@@ -8,9 +8,6 @@ data:
 
     # tor --hash-password passwordtogenerate
     HashedControlPassword 16:F6037168CB4D199660646ED37463953A4F77220A6FAEC180D09956CD8F
-
-    # proxy
-    Socks5Proxy 192.168.12.84:7897
 metadata:
   labels:
     app: lnd-tor
