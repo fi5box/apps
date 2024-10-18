@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rtl
+  namespace: testnet
+  labels:
+    app: rtl
+spec:
+  serviceName: rtl
+  replicas: 1 # Scale as match as you want
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: rtl
+  template:
+    metadata:
+      labels:
+        app: rtl
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: rtl
+          image: shahanafarooqui/rtl:v0.15.2
+          env:
+          - name: RTL_CONFIG_PATH
+            value: /data
+          - name: CHANNEL_BACKUP_PATH
+            value: /data/backup
+          - name: LN_IMPLEMENTATION
+            value: LND
+          - name: LN_SERVER_URL
+            value: https://lnd-0.lnd:8080
+          - name: MACAROON_PATH
+            value: /lnd/data/chain/bitcoin/testnet/
+          - name: BOLTZ_MACAROON_PATH
+            value: /data/macaroons
+          ports:
+          - containerPort: 3000
+            name: rtl-web
+            protocol: TCP
+          volumeMounts:
+            - name: rtl
+              mountPath: /data
+            - name: lnd
+              mountPath: /lnd
+        - name: boltz
+          image: boltz/boltz-client:2.1.1
+          command:
+          - boltzd
+          - --lnd.host="lnd-0.lnd"
+          - --lnd.macaroon="/lnd/data/chain/bitcoin/testnet/admin.macaroon"
+          - --lnd.certificate="/lnd/tls.cert"
+          ports:
+          - containerPort: 9002
+            name: boltz-grpc
+            protocol: TCP
+          - containerPort: 9003
+            name: boltz-rest
+            protocol: TCP
+          volumeMounts:
+            - name: rtl
+              mountPath: /root/.boltz
+            - name: lnd
+              mountPath: /lnd
+      volumes:
+      - configMap:
+          name: rtl-config
+        name: rtl-config
+      - name: lnd
+        persistentVolumeClaim:
+          claimName: lnd-lnd-0
+  volumeClaimTemplates:
+    - metadata:
+        name: rtl
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 50Gi

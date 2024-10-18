@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bitcoin
+  namespace: regtest
+  labels:
+    app: bitcoin
+spec:
+  serviceName: bitcoin
+  replicas: 1 # Scale as match as you want
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: bitcoin
+  template:
+    metadata:
+      labels:
+        app: bitcoin
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: bitcoin
+          image: lncm/bitcoind:v27.0
+          command:
+          - bitcoind
+          - -regtest
+          - -rpcbind=0.0.0.0
+          - -rpcallowip=0.0.0.0/0
+          - -rpcauth=bitcoin:56d30f439157b00e0b785d6e9a3c99b5$2b79f3a51f763d256fe700e1bca6abdaf087c8eb001e6bbf2f6b55504796af5a
+          - -zmqpubrawblock=tcp://0.0.0.0:28332
+          - -zmqpubrawtx=tcp://0.0.0.0:28333
+          - -fallbackfee=0.00001
+          ports:
+          - containerPort: 18443
+            name: bitcoin-rpc
+            protocol: TCP
+          - containerPort: 18444
+            name: bitcoin-p2p
+            protocol: TCP
+          - containerPort: 28332
+            name: zmp-block
+            protocol: TCP
+          - containerPort: 28333
+            name: zmp-tx
+            protocol: TCP
+          volumeMounts:
+            - name: bitcoin
+              mountPath: /data/.bitcoin
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsUser: 1000
+  volumeClaimTemplates:
+    - metadata:
+        name: bitcoin
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 5Gi
