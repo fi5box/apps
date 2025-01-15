@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app.kubernetes.io/instance: agent
@@ -56,8 +56,13 @@ spec:
           securityContext: {}
           volumeMounts:
             - mountPath: /app/data/
-              name: storage
-      volumes:
-        - name: storage
-          persistentVolumeClaim:
-            claimName: destbridge-agent
+              name: destbridge-agent
+  volumeClaimTemplates:
+    - metadata:
+        name: destbridge-agent
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 1Gi
