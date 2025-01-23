@@ -76,7 +76,7 @@
             "name": "destbridge-agent",
             "title": "destbridge-agent",
             "icon": "/res/destbridge-agent.png",
-            "version": "v0.0.1",
+            "version": "v0.0.2",
             "maintainer": "Fi5Box",
             "category": "destbridge",
             "introduction": "destbridge agent.",
