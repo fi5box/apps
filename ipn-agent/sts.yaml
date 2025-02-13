@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/instance: agent
+    app.kubernetes.io/name: ipn-agent
+  name: ipn-agent
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: agent
+      app.kubernetes.io/name: ipn-agent
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: agent
+        app.kubernetes.io/name: ipn-agent
+    spec:
+      containers:
+        - image: registry.devops.rivtower.com/interpaystellar/agent:v0.0.1
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            initialDelaySeconds: 10
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: ipn-agent
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            initialDelaySeconds: 10
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources: 
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: 10m
+              memory: 32Mi
+          securityContext: {}
+          volumeMounts:
+            - mountPath: /app/data/
+              name: ipn-agent
+  volumeClaimTemplates:
+    - metadata:
+        name: ipn-agent
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 1Gi

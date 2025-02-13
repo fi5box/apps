@@ -86,6 +86,21 @@
             "dependent": [],
             "nodeport": 30010,
             "homepage": "http://fi5box.local:30010"
+        },
+        {
+            "name": "ipn-agent",
+            "title": "ipn-agent",
+            "icon": "/res/ipn-agent.png",
+            "version": "v0.0.1",
+            "maintainer": "Fi5Box",
+            "category": "ipn",
+            "introduction": "ipn agent.",
+            "screenshots": [
+                "/res/ipn-0.png"
+            ],
+            "dependent": [],
+            "nodeport": 30011,
+            "homepage": "http://fi5box.local:30011"
         }
     ]
 }
