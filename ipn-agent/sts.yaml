@@ -19,7 +19,7 @@ spec:
         app.kubernetes.io/name: ipn-agent
     spec:
       containers:
-        - image: registry.devops.rivtower.com/interpaystellar/agent:v0.0.1
+        - image: registry.devops.rivtower.com/interpaystellar/agent:v0.0.2
           imagePullPolicy: IfNotPresent
           livenessProbe:
             initialDelaySeconds: 10
