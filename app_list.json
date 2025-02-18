@@ -91,7 +91,7 @@
             "name": "ipn-agent",
             "title": "ipn-agent",
             "icon": "/res/ipn-agent.png",
-            "version": "v0.0.4",
+            "version": "v0.0.5",
             "maintainer": "Fi5Box",
             "category": "ipn",
             "introduction": "ipn agent.",
