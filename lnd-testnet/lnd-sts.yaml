@@ -20,7 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: lnd
-          image: lightninglabs/lndinit:v0.1.22-beta-lnd-v0.18.3-beta.rc1
+          image: lightninglabs/lndinit:v0.1.23-beta-lnd-v0.18.5-beta
           command: ["/bin/bash", "-c"]
           args:
             - if [[ ! -f /root/.lnd/walletpassword.txt ]]; then lndinit gen-password > /root/.lnd/walletpassword.txt; fi;

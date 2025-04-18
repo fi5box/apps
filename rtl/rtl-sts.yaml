@@ -20,7 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: rtl
-          image: shahanafarooqui/rtl:v0.15.2
+          image: shahanafarooqui/rtl:v0.15.4
           env:
           - name: RTL_CONFIG_PATH
             value: /data
@@ -44,7 +44,7 @@ spec:
             - name: lnd
               mountPath: /lnd
         - name: boltz
-          image: boltz/boltz-client:2.1.1
+          image: boltz/boltz-client:2.5.1
           command:
           - boltzd
           - --lnd.host="lnd-0.lnd"

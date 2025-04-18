@@ -20,7 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: bitcoin
-          image: lncm/bitcoind:v27.0
+          image: lncm/bitcoind:v27.2
           command:
           - bitcoind
           - -testnet

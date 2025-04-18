@@ -20,11 +20,11 @@ spec:
       restartPolicy: Always
       containers:
         - name: ckb
-          image: nervos/ckb:v0.117.0
+          image: nervos/ckb:v0.201.0
           command:
           - bash
           - -c
-          - "ckb init -c mainnet; ckb run"
+          - "ckb init -c mainnet --ba-arg 0x971bdabbe050deda9a075d2108872a93902ef483; ckb run"
           ports:
           - containerPort: 8114
             name: ckb-rpc

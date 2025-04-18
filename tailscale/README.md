@@ -3,12 +3,12 @@ Tailscale makes creating software-defined networks easy: securely connecting use
 
 ## image
 
-tailscale/tailscale:v1.72.1
-tailscale/tailscale-operator:v1.72.1
+tailscale/tailscale:v1.82.0
+tailscale/k8s-operator:v1.82.0
 
 ## manifest
 
-https://github.com/tailscale/tailscale/blob/v1.72.1/cmd/k8s-operator/deploy/manifests/operator.yaml
+https://github.com/tailscale/tailscale/blob/v1.82.0/cmd/k8s-operator/deploy/manifests/operator.yaml
 
 imagePullPolicy 改为 IfNotPresent
 
