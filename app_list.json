@@ -101,6 +101,21 @@
             "dependent": [],
             "nodeport": 30011,
             "homepage": "http://fi5box.local:30011"
+        },
+        {
+            "name": "bescard-agent",
+            "title": "bescard-agent",
+            "icon": "/res/bescard-agent.png",
+            "version": "v1.0.0",
+            "maintainer": "Fi5Box",
+            "category": "bescard",
+            "introduction": "bescard agent.",
+            "screenshots": [
+                "/res/bescard-0.png"
+            ],
+            "dependent": [],
+            "nodeport": 30012,
+            "homepage": "http://fi5box.local:30012"
         }
     ]
 }
